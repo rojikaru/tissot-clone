@@ -1,0 +1,23 @@
+@import url('./assets/fonts.css');
+
+body {
+  margin: 0;
+  line-height: inherit;
+  min-height: 100vh;
+  font-family: 'Tissot Sans', 'Noto Sans', Arial, Helvetica, sans-serif;
+  color: #252525;
+  font-size: 1.6rem;
+}
+
+html {
+  -moz-tab-size: 4;
+  tab-size: 4;
+  -webkit-text-size-adjust: 100%;
+  scroll-padding-top: 200px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.hidden {
+  display: none;
+}
