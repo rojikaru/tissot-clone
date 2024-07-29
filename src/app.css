@@ -27,3 +27,40 @@ button {
   cursor: pointer;
   line-height: 1.6em;
 }
+
+.btn-primary {
+  display: inline-flex;
+  /* margin-top: 20px; */
+  color: white;
+  text-decoration: none;
+  border-radius: 25px;
+  font-size: 0.75rem;
+  letter-spacing: 2px;
+  width: 100%;
+  max-width: 19rem;
+  height: 3rem;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+  padding: 0 1.5rem;
+  font-weight: 500;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.2s ease-in;
+}
+
+.btn-primary:not(:hover) {
+  background-color: #dc1f18;
+}
+
+.btn-primary:hover, .btn-primary:focus {
+  background-color: #1b1b1b;
+  color: white;
+}
+
+.btn-primary:focus {
+  border-color: #fff;
+  box-shadow: 0 0 8px #dc1f18cc;
+  outline: 1px dashed red;
+  outline-offset: 5px;
+}

@@ -1,24 +1,34 @@
 <script lang="ts">
     import white_logo from "../assets/images/tissot-white.svg";
     import black_logo from "../assets/images/tissot-black.svg";
+    import Scroll from "../helpers/scroll.svelte";
 
-    const doc = document.documentElement || document.body;
-
-    let isTop = doc.scrollTop <= 0;
     let logo = white_logo;
+
+    const dispatchSearch = (input: boolean | string) => {
+        if (typeof input === "boolean") {
+            input = input.toString();
+        }
+        document.querySelector(".search")?.setAttribute("aria-hidden", input);
+    };
+
+    let isTop = true;
+    let isScrollingDown = false;
+
+    export let isMenuOpen = false;
 </script>
 
-<svelte:window
-    on:scroll={() => {
-        isTop = doc.scrollTop <= 0;
+<Scroll
+    bind:isTop
+    bind:isScrollingDown
+    handleLoad={() => dispatchSearch("false")}
+    scrollCallback={() => {
         logo = isTop ? white_logo : black_logo;
-    }}
-    on:load={() => {
-        document.querySelector(".search")?.setAttribute("aria-hidden", "false");
+        dispatchSearch(isScrollingDown && !isTop);
     }}
 />
 
-<header class="header">
+<header class={`header${!isTop ? " header-white" : ""}`}>
     {#if isTop}
         <div class="callout">
             <div class="content">
@@ -30,14 +40,14 @@
             </div>
         </div>
     {/if}
-    <nav class={`main-nav${isTop ? " transparent" : ""}`}>
+    <nav class={`main-nav`}>
         <div class="logo">
             <a class="logo" href="#top">
-                <img src={logo} alt="Tissot logo" class="logo" />
+                <img src={logo} alt="Tissot logo" class="logo" loading="lazy" />
             </a>
         </div>
     </nav>
-    <nav class="search" aria-hidden="true">
+    <nav class={`search${!isTop ? " white" : ""}`} aria-hidden="true">
         <div class="flex">
             <form action="#search" method="post">
                 <input
@@ -45,19 +55,15 @@
                     type="search"
                     placeholder="Search for a product"
                 />
-                <button class={`btn-search${isTop ? " white" : ""}`}>
+                <button class={`btn-search`}>
                     <svg class="icon">
                         <use xlink:href="/images/symbols.svg#icon-search"></use>
                     </svg>
                 </button>
             </form>
             <button
-                class={`btn-dismiss${isTop ? " white" : ""}`}
-                on:click={() =>
-                    document
-                        .querySelector(".search")
-                        ?.setAttribute("aria-hidden", "true")}
-            >
+                class={`btn-dismiss`}
+                on:click={() => dispatchSearch("true")}>
                 <svg class="icon">
                     <use xlink:href="/images/symbols.svg#icon-x"></use>
                 </svg>
@@ -100,11 +106,11 @@
         text-decoration: underline;
     }
 
-    .main-nav:not(.transparent) {
+    .header-white .main-nav {
         background-color: white;
     }
 
-    .main-nav.transparent {
+    .main-nav {
         background-color: transparent;
     }
 
@@ -112,6 +118,10 @@
         display: flex;
         justify-content: center;
         align-items: center;
+    }
+
+    .header-white .main-nav {
+        border-bottom: 1px solid #00000033;
     }
 
     div.logo {
@@ -126,7 +136,7 @@
         max-width: 100%;
         margin: 0;
         position: relative;
-        margin: 20px 0;
+        padding: 20px 0;
     }
 
     .logo img {
@@ -170,21 +180,21 @@
             left: 0;
             width: 100%;
             top: 100%;
-            transform: translateY(-10%);
-            z-index: 0;
+            transform: translateY(-100%);
+            height: 70px;
+            z-index: -1;
             transition:
                 transform 0.3s ease-in,
                 opacity 0.3s ease-in,
                 visibility 0.3s ease-in;
         }
 
-        .search[aria-hidden="false"] {
-            transform: translateY(0);
+        :global(.search[aria-hidden=false]) {
+            transform: translateY(0) !important;
         }
 
-        .search[aria-hidden="true"] {
-            transform: translateY(-100%);
-            opacity: 0;
+        :global(.search[aria-hidden=true]) {
+            transform: translateY(-100%) !important;
             visibility: hidden;
         }
     }
@@ -193,20 +203,31 @@
         position: relative;
         width: 100%;
         max-width: 780px;
+        display: flex;
     }
 
     .btn-dismiss {
         background-color: transparent;
         border: none;
         position: absolute;
-        top: 40%;
+        top: 30%;
         right: 30px;
+        color: white;
+    }
+
+    .header-white .btn-dismiss,
+    .header-white .btn-search,
+    .header-white .search {
         color: black;
     }
 
-    .btn-dismiss.white,
-    .btn-search.white {
-        color: white;
+    .header-white .search {
+        background-color: white;
+    }
+
+    .search.white input[type="search"] {
+        background-color: #f1f1f1;
+        color: #757575;
     }
 
     .icon {
@@ -222,9 +243,9 @@
         background-color: transparent;
         border: none;
         position: absolute;
-        top: 30%;
+        top: 15%;
         left: 4px;
-        color: black;
+        color: white;
     }
 
     .btn-search:hover {
