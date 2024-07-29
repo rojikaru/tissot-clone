@@ -7,6 +7,7 @@ body {
   font-family: 'Tissot Sans', 'Noto Sans', Arial, Helvetica, sans-serif;
   color: #252525;
   font-size: 1.6rem;
+  transition: all .2s ease-in;
 }
 
 html {
@@ -20,4 +21,9 @@ html {
 
 .hidden {
   display: none;
+}
+
+button {
+  cursor: pointer;
+  line-height: 1.6em;
 }
