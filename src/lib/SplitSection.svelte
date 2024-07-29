@@ -6,7 +6,19 @@
     export let subtitle: string = "Discover";
     export let watches: Watch[];
     export let img: string;
+
+    const visibilityObserver = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add("loaded");
+            }
+        });
+    });
+
+    let imgElement: HTMLImageElement;
 </script>
+
+<svelte:window on:scroll={() => visibilityObserver.observe(imgElement)} />
 
 <section class="split-section">
     <div class={`img-background ${isImgLeft ? "left" : ""}`}>
@@ -14,7 +26,7 @@
             <h2>{title}</h2>
             <a class="btn-primary" href="#top">{subtitle}</a>
         </div>
-        <img src={img} alt={title + " image"} loading="lazy" />
+        <img bind:this={imgElement} src={img} alt={title + " image"} loading="lazy" />
     </div>
     <div class="watch-grid">
         {#each watches as watch}
@@ -43,7 +55,7 @@
     }
 
     :global(.img-background img.loaded) {
-        transform: scale(1);
+        transform: scale(1) !important;
     }
 
     .split-section {

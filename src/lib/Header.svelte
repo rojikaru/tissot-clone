@@ -169,6 +169,7 @@
 
     .search .flex {
         display: flex;
+        position: relative;
         justify-content: center;
         align-items: flex-start;
         padding: 16px 24px;
@@ -210,9 +211,9 @@
         background-color: transparent;
         border: none;
         position: absolute;
-        top: 30%;
+        top: 33%;
         right: 30px;
-        color: white;
+        color: #ffffffaa;
     }
 
     .header-white .btn-dismiss,

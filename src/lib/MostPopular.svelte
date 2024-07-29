@@ -1,5 +1,5 @@
 <section class="most-popular">
-    <div class="img"></div>
+    <a href="#top"><div class="img"></div></a>
     <div class="title">
         <h1>TISSOT</h1>
         <h2>PR 100 CHRONOGRAPH</h2>
@@ -16,8 +16,14 @@
         height: 0;
         /* min-height: 350px; */
         overflow: hidden;
-        padding-bottom: 56.25%;
+        padding-bottom: 177.7777778%;
         margin-bottom: 40px;
+    }
+
+    @media (min-width: 870px) {
+        .most-popular {
+            padding-bottom: 56.25%;
+        }
     }
 
     .most-popular .img {

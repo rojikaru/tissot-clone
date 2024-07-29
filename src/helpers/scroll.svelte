@@ -1,7 +1,9 @@
 <script lang="ts">
     const doc = document.documentElement || document.body;
 
-    export let isTop = doc.scrollTop <= 0;
+    export let tolerance = 10;
+
+    export let isTop = doc.scrollTop <= tolerance;
 
     export let lastScrollTop = 0;
     export let isScrollingDown = true;
@@ -10,7 +12,7 @@
     export let handleLoad: (() => void) | null;
 
     const handleScroll = () => {
-        isTop = doc.scrollTop <= 10; // tolerance
+        isTop = doc.scrollTop <= tolerance; // tolerance
 
         const st = doc.scrollTop;
         isScrollingDown = st > lastScrollTop;
