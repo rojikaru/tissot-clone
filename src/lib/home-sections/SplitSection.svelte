@@ -1,6 +1,6 @@
 <script lang="ts">
     import { onMount } from "svelte";
-    import type Watch from "../models/watch";
+    import type Watch from "../../models/watch";
 
     export let isImgLeft = false;
     export let title: string;
@@ -11,7 +11,6 @@
     const visibilityObserver = new IntersectionObserver(
         (entries) => {
             entries.forEach((entry) => {
-                // console.log(entry, entry.intersectionRatio);
                 if (entry.isIntersecting) {
                     entry.target.classList.add("loaded");
                     visibilityObserver.unobserve(entry.target);
@@ -56,14 +55,14 @@
             <h2>{title}</h2>
             <a class="btn-primary" href="#top">{subtitle}</a>
         </div>
-        <span class="fade-container">
+        <div class="fade-container">
             <img
                 bind:this={imgElement}
                 src={img}
                 alt={title + " image"}
                 loading="lazy"
             />
-        </span>
+        </div>
     </div>
 </section>
 
@@ -73,7 +72,6 @@
         color: white;
         display: grid;
         grid-template-columns: minmax(0, 1fr);
-        column-gap: 1rem;
         margin-bottom: 50px;
     }
 
@@ -88,7 +86,6 @@
         object-fit: cover;
         transition: all 0.2s ease-in;
         transform: scale(0.9);
-        z-index: -1;
     }
 
     :global(.img-background img.loaded) {
@@ -138,6 +135,7 @@
     h2 {
         font-size: 1.5rem;
         font-weight: 400;
+        margin: 25px 0;
     }
 
     .fixed {
@@ -220,7 +218,6 @@
         .fixed {
             padding-top: 50px;
             inset: 0;
-            z-index: 1;
         }
 
         .img-background {
@@ -229,6 +226,31 @@
 
         .left {
             order: -1;
+        }
+    }
+
+    @media (min-width: 1024px) {
+        h2 {
+            font-size: 40px;
+        }
+    }
+
+    @media (min-width: 1280px) {
+        .split-section {
+            margin: 0 3vw 90px;
+            padding: 0;
+        }
+
+        .img-background {
+            padding: 0 20px;
+        }
+
+        .split-section {
+            gap: 40px;
+        }
+
+        .watch {
+            margin: 0 20px;
         }
     }
 </style>

@@ -1,19 +1,29 @@
 <script lang="ts">
-    import white_logo from "../assets/images/tissot-white.svg";
-    import black_logo from "../assets/images/tissot-black.svg";
-    import Scroll from "../helpers/scroll.svelte";
+    import white_logo from "../../assets/images/tissot-white.svg";
+    import black_logo from "../../assets/images/tissot-black.svg";
+    import Scroll from "../../helpers/scroll.svelte";
+
+    $: innerWidth = window.innerWidth;
 
     let logo = white_logo;
+    let isTop = true;
+    let isScrollingDown = false;
 
-    const dispatchSearch = (input: boolean | string) => {
+    const dispatchNav = (input: boolean | string) => {
         if (typeof input === "boolean") {
             input = input.toString();
         }
-        document.querySelector(".search")?.setAttribute("aria-hidden", input);
-    };
 
-    let isTop = true;
-    let isScrollingDown = false;
+        if (innerWidth < 1280) {
+            document
+                .querySelector(".search")
+                ?.setAttribute("aria-hidden", input);
+        } else {
+            document
+                .querySelector(".main-nav")
+                ?.setAttribute("aria-hidden", input);
+        }
+    };
 
     export let isMenuOpen = false;
 </script>
@@ -21,55 +31,64 @@
 <Scroll
     bind:isTop
     bind:isScrollingDown
-    handleLoad={() => dispatchSearch("false")}
+    handleLoad={() => dispatchNav("false")}
     scrollCallback={() => {
         logo = isTop ? white_logo : black_logo;
-        dispatchSearch(isScrollingDown && !isTop && window.innerWidth < 1280);
+        dispatchNav(isScrollingDown && !isTop && window.innerWidth < 1280);
     }}
 />
 
 <header class={`header${!isTop ? " header-white" : ""}`}>
-    {#if isTop}
-        <div class="callout">
-            <div class="content">
-                <strong>
-                    REGISTER YOUR WATCH
-                    <a href="#top">HERE</a>
-                </strong>
-                TO ACCESS YOUR WARRANTY INFORMATION AND MORE
+    <div class={`callout${isTop ? " visible" : ""}`}>
+        <div class="content">
+            <strong>
+                REGISTER YOUR WATCH
+                <a href="#top">HERE</a>
+            </strong>
+            TO ACCESS YOUR WARRANTY INFORMATION AND MORE
+        </div>
+    </div>
+    {#if innerWidth < 1280}
+        <nav class={`main-nav`}>
+            <div class="logo">
+                <a class="logo" href="#top">
+                    <img
+                        src={logo}
+                        alt="Tissot logo"
+                        class="logo"
+                        loading="lazy"
+                    />
+                </a>
             </div>
-        </div>
-    {/if}
-    <nav class={`main-nav`}>
-        <div class="logo">
-            <a class="logo" href="#top">
-                <img src={logo} alt="Tissot logo" class="logo" loading="lazy" />
-            </a>
-        </div>
-    </nav>
-    <nav class={`search${!isTop ? " white" : ""}`} aria-hidden="true">
-        <div class="flex">
-            <form action="#search" method="post">
-                <input
-                    class={isTop ? "transparent" : ""}
-                    type="search"
-                    placeholder="Search for a product"
-                />
-                <button class={`btn-search`}>
+        </nav>
+        <nav class={`search${!isTop ? " white" : ""}`} aria-hidden="true">
+            <div class="flex">
+                <form action="#search" method="post">
+                    <input
+                        class={isTop ? "transparent" : ""}
+                        type="search"
+                        placeholder="Search for a product"
+                    />
+                    <button class={`btn-search`}>
+                        <svg class="icon">
+                            <use xlink:href="/images/symbols.svg#icon-search"
+                            ></use>
+                        </svg>
+                    </button>
+                </form>
+                <button
+                    class={`btn-dismiss`}
+                    on:click={() => dispatchNav(window.innerWidth < 1280)}
+                >
                     <svg class="icon">
-                        <use xlink:href="/images/symbols.svg#icon-search"></use>
+                        <use xlink:href="/images/symbols.svg#icon-x"></use>
                     </svg>
                 </button>
-            </form>
-            <button
-                class={`btn-dismiss`}
-                on:click={() => dispatchSearch(window.innerWidth < 1280)}>
-                <svg class="icon">
-                    <use xlink:href="/images/symbols.svg#icon-x"></use>
-                </svg>
-            </button>
-        </div>
-    </nav>
+            </div>
+        </nav>
+    {:else}
+        <nav class={`main-nav`} aria-hidden="false"></nav>
+    {/if}
 </header>
 
 <style>
@@ -87,12 +106,20 @@
         font-size: 0.85rem;
         font-weight: 400;
         min-height: 50px;
-    }
 
-    .callout {
-        display: flex;
+        display: none;
+        visibility: hidden;
         justify-content: center;
         align-items: center;
+
+        transition: all 0.2s ease;
+        height: 0;
+    }
+
+    .callout.visible {
+        display: flex;
+        visibility: visible;
+        height: fit-content;
     }
 
     .callout .content {
@@ -190,11 +217,11 @@
                 visibility 0.3s ease-in;
         }
 
-        :global(.search[aria-hidden=false]) {
+        :global(.search[aria-hidden="false"]) {
             transform: translateY(0) !important;
         }
 
-        :global(.search[aria-hidden=true]) {
+        :global(.search[aria-hidden="true"]) {
             transform: translateY(-100%) !important;
             visibility: hidden;
         }

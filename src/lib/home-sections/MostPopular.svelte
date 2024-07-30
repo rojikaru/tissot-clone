@@ -19,13 +19,6 @@
         padding-bottom: 177.7777778%;
     }
 
-    @media (min-width: 870px) {
-        .most-popular {
-            padding-bottom: 56.25%;
-            margin-bottom: 40px;
-        }
-    }
-
     .most-popular .img {
         position: absolute;
         background-color: #000;
@@ -58,5 +51,28 @@
         font-size: 40px;
         margin: -13px 0 40px 0;
         font-weight: 400;
+    }
+
+    @media (min-width: 870px) {
+        .most-popular {
+            padding-bottom: 56.25%;
+            margin-bottom: 40px;
+        }
+    }
+
+    @media (min-width: 1280px) {
+        .title {
+            right: auto;
+            bottom: 80px;
+            left: 50px;
+        }
+    }
+
+    @media screen and (min-aspect-ratio: 16 / 9) {
+        .title {
+            bottom: auto;
+            top: calc(100vh - 40px);
+            transform: translateY(-100%);
+        }
     }
 </style>

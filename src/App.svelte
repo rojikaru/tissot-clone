@@ -1,15 +1,18 @@
 <script lang="ts">
-  import Footer from "./lib/Footer.svelte";
-  import Header from "./lib/Header.svelte";
-  import Main from "./lib/Main.svelte";
+  import Footer from "./lib/global-components/Footer.svelte";
+  import Header from "./lib/global-components/Header.svelte";
+  import Menu from "./lib/global-components/Menu.svelte";
+  import Home from "./lib/Home.svelte";
 
-  let isMenuOpen = false;
+  let menuOpen = false;
 </script>
 
-{#if isMenuOpen}
-  <div>Menu</div>
+{#if menuOpen}
+  <Menu />
 {:else}
-<Header bind:isMenuOpen={isMenuOpen} />
-<Main />
-<Footer />
+  <Header bind:isMenuOpen={menuOpen} />
+  <main class="main">
+    <Home />
+  </main>
+  <Footer />
 {/if}
