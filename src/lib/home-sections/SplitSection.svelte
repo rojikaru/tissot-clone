@@ -1,5 +1,4 @@
 <script lang="ts">
-    import { onMount } from "svelte";
     import type Watch from "../../models/watch";
 
     export let isImgLeft = false;
@@ -22,20 +21,13 @@
         },
     );
 
-    let imgElement: HTMLImageElement;
-
-    onMount(() => {
-        visibilityObserver.observe(imgElement);
-        document.querySelectorAll(".watch").forEach((watch) => {
-            visibilityObserver.observe(watch);
-        });
-    });
+    const observe = (element: Element) => visibilityObserver.observe(element);
 </script>
 
 <section class="split-section">
     <div class="watch-grid">
-        {#each watches as watch, i}
-            <div class="watch">
+        {#each watches as watch}
+            <div class="watch" use:observe>
                 <a href={watch.link} class="thumbnail">
                     <img
                         src={watch.image}
@@ -50,14 +42,14 @@
             </div>
         {/each}
     </div>
-    <div class={`img-background ${isImgLeft ? "left" : ""}`}>
+    <div class="img-background" class:left={isImgLeft}>
         <div class="fixed">
             <h2>{title}</h2>
             <a class="btn-primary" href="#top">{subtitle}</a>
         </div>
         <div class="fade-container">
             <img
-                bind:this={imgElement}
+                use:observe
                 src={img}
                 alt={title + " image"}
                 loading="lazy"
@@ -127,9 +119,9 @@
         transform: scale(1.04);
     }
 
-    .watch.loaded {
-        opacity: 1;
-        transform: scale(1);
+    :global(.watch.loaded) {
+        opacity: 1 !important;
+        transform: scale(1) !important;
     }
 
     h2 {

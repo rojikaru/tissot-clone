@@ -8,24 +8,19 @@
     let logo = white_logo;
     let isTop = true;
     let isScrollingDown = false;
+    let menuOpen = false;
+
+    let navOpen = true;
 
     const dispatchNav = (input: boolean | string) => {
-        if (typeof input === "boolean") {
-            input = input.toString();
+        if (typeof input === "string") {
+            input = input === "true";
         }
 
-        if (innerWidth < 1280) {
-            document
-                .querySelector(".search")
-                ?.setAttribute("aria-hidden", input);
-        } else {
-            document
-                .querySelector(".main-nav")
-                ?.setAttribute("aria-hidden", input);
-        }
+        navOpen = input;
     };
 
-    export let isMenuOpen = false;
+    export const isMenuOpen = menuOpen && innerWidth < 1280;
 </script>
 
 <Scroll
@@ -38,8 +33,8 @@
     }}
 />
 
-<header class={`header${!isTop ? " header-white" : ""}`}>
-    <div class={`callout${isTop ? " visible" : ""}`}>
+<header class="header" class:header-white={!isTop}>
+    <div class="callout" class:visible={isTop}>
         <div class="content">
             <strong>
                 REGISTER YOUR WATCH
@@ -49,7 +44,7 @@
         </div>
     </div>
     {#if innerWidth < 1280}
-        <nav class={`main-nav`}>
+        <nav class="main-nav">
             <div class="logo">
                 <a class="logo" href="#top">
                     <img
@@ -61,7 +56,7 @@
                 </a>
             </div>
         </nav>
-        <nav class={`search${!isTop ? " white" : ""}`} aria-hidden="true">
+        <nav class="search" class:white={!isTop} aria-hidden={navOpen}>
             <div class="flex">
                 <form action="#search" method="post">
                     <input
@@ -69,7 +64,7 @@
                         type="search"
                         placeholder="Search for a product"
                     />
-                    <button class={`btn-search`}>
+                    <button class="btn-search">
                         <svg class="icon">
                             <use xlink:href="/images/symbols.svg#icon-search"
                             ></use>
@@ -77,8 +72,8 @@
                     </button>
                 </form>
                 <button
-                    class={`btn-dismiss`}
-                    on:click={() => dispatchNav(window.innerWidth < 1280)}
+                    class="btn-dismiss"
+                    on:click={() => dispatchNav(innerWidth < 1280)}
                 >
                     <svg class="icon">
                         <use xlink:href="/images/symbols.svg#icon-x"></use>
@@ -87,7 +82,7 @@
             </div>
         </nav>
     {:else}
-        <nav class={`main-nav`} aria-hidden="false"></nav>
+        <nav class="main-nav" aria-hidden={navOpen}></nav>
     {/if}
 </header>
 

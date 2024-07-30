@@ -1,5 +1,3 @@
-<script lang="ts"></script>
-
 <section class="register">
     <div class="description">
         <h2 class="uppercase">Register my watch</h2>
