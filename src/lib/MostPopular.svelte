@@ -17,12 +17,12 @@
         /* min-height: 350px; */
         overflow: hidden;
         padding-bottom: 177.7777778%;
-        margin-bottom: 40px;
     }
 
     @media (min-width: 870px) {
         .most-popular {
             padding-bottom: 56.25%;
+            margin-bottom: 40px;
         }
     }
 

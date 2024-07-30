@@ -24,7 +24,7 @@
     handleLoad={() => dispatchSearch("false")}
     scrollCallback={() => {
         logo = isTop ? white_logo : black_logo;
-        dispatchSearch(isScrollingDown && !isTop);
+        dispatchSearch(isScrollingDown && !isTop && window.innerWidth < 1280);
     }}
 />
 
@@ -63,7 +63,7 @@
             </form>
             <button
                 class={`btn-dismiss`}
-                on:click={() => dispatchSearch("true")}>
+                on:click={() => dispatchSearch(window.innerWidth < 1280)}>
                 <svg class="icon">
                     <use xlink:href="/images/symbols.svg#icon-x"></use>
                 </svg>
