@@ -4,10 +4,10 @@
 
 <section class="categories">
     <h2>Our categories</h2>
-    <div class="carousel" >
+    <div class="carousel">
         {#each categories as cat}
             <div class="category">
-                <a href={cat.link}>
+                <a href={cat.link} class="flex-img">
                     <h3>{cat.name}</h3>
                     <img src={cat.image} alt={cat.name} />
                 </a>
@@ -26,7 +26,6 @@
 
     .categories a {
         text-decoration: none;
-        display: block;
         width: 100%;
         height: 100%;
     }
@@ -49,6 +48,7 @@
     .categories h3 {
         font-size: 16px;
         margin: 16px 15px 25px;
+        transition: all 0.2s ease;
     }
 
     .carousel {
@@ -57,9 +57,9 @@
         flex-wrap: nowrap;
         gap: 10px;
 
-        scroll-snap-type: x mandatory;	
-		-webkit-overflow-scrolling: touch;
-		overflow-x: scroll;
+        scroll-snap-type: x mandatory;
+        -webkit-overflow-scrolling: touch;
+        overflow-x: scroll;
         scrollbar-width: none;
     }
 
@@ -71,8 +71,17 @@
     }
 
     .category img {
+        transition: all 0.2s ease;
+        justify-self: flex-end;
+    }
+
+    .flex-img {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
         width: 100%;
         height: auto;
+        overflow: hidden;
     }
 
     @media (min-width: 768px) {
@@ -102,6 +111,14 @@
     @media (min-width: 1280px) {
         .category {
             flex: 0 1 auto;
+        }
+
+        .category:hover h3 {
+            color: #dc1f18 !important;
+        }
+
+        .category:hover img {
+            transform: scale(1.03);
         }
     }
 </style>

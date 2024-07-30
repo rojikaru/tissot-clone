@@ -3,6 +3,7 @@
     import MostPopularSection from "./home-sections/MostPopular.svelte";
     import SplitSection from "./home-sections/SplitSection.svelte";
     import CategoriesSection from "./home-sections/Categories.svelte";
+    import Register from "./home-sections/Register.svelte";
 </script>
 
 <MostPopularSection />
@@ -19,3 +20,4 @@
     img="/images/woman.avif"
 />
 <CategoriesSection />
+<Register/>

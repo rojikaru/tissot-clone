@@ -36,7 +36,7 @@
     <div class="watch-grid">
         {#each watches as watch, i}
             <div class="watch">
-                <a href="#top" class="thumbnail">
+                <a href={watch.link} class="thumbnail">
                     <img
                         src={watch.image}
                         alt={watch.name + " image"}
