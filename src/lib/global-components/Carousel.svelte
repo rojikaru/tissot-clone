@@ -187,6 +187,7 @@
         display: block;
         position: relative;
         padding-bottom: 100%;
+        overflow: hidden;
     }
 
     .card .img img {
@@ -265,6 +266,15 @@
 
     .card a {
         color: #252525;
+        transition: all 0.2s ease-in;
+    }
+
+    .card:hover a {
+        color: #dc1f18;
+    }
+
+    .card:hover img {
+        transform: translate3d(-50%, -50%, 0) scale(1.05);
     }
 
     .card h3 {
