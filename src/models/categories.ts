@@ -17,32 +17,32 @@ export default class Category {
 export const categories: Category[] = [
     new Category(
         'Classic',
-        '/src/assets/images/categories/classic.webp',
+        '/images/categories/classic.webp',
         '#top'
     ),
     new Category(
         'Sport',
-        '/src/assets/images/categories/sport.avif',
+        '/images/categories/sport.avif',
         '#top'
     ),
     new Category(
         'Heritage',
-        '/src/assets/images/categories/heritage.webp',
+        '/images/categories/heritage.webp',
         '#top'
     ),
     new Category(
         'Touch',
-        '/src/assets/images/categories/touch.webp',
+        '/images/categories/touch.webp',
         '#top'
     ),
     new Category(
         'Pocket',
-        '/src/assets/images/categories/pocket.avif',
+        '/images/categories/pocket.avif',
         '#top'
     ),
     new Category(
         'Gold',
-        '/src/assets/images/categories/gold.avif',
+        '/images/categories/gold.avif',
         '#top'
     ),
 ]

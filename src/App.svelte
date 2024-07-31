@@ -1,4 +1,5 @@
 <script lang="ts">
+  import "./app.css";
   import Footer from "./lib/global-components/Footer.svelte";
   import Header from "./lib/global-components/Header.svelte";
   import Menu from "./lib/global-components/Menu.svelte";

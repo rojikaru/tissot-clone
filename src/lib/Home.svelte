@@ -4,6 +4,7 @@
     import SplitSection from "./home-sections/SplitSection.svelte";
     import CategoriesSection from "./home-sections/Categories.svelte";
     import Register from "./home-sections/Register.svelte";
+    import Novelties from "./home-sections/Novelties.svelte";
 </script>
 
 <MostPopularSection />
@@ -21,3 +22,4 @@
 />
 <CategoriesSection />
 <Register/>
+<Novelties />

@@ -1,9 +1,10 @@
 <script lang="ts">
-    import white_logo from "../../assets/images/tissot-white.svg";
-    import black_logo from "../../assets/images/tissot-black.svg";
     import Scroll from "../../helpers/scroll.svelte";
 
     $: innerWidth = window.innerWidth;
+
+    const black_logo = "/images/tissot-black.svg";
+    const white_logo = "/images/tissot-white.svg";
 
     let logo = white_logo;
     let isTop = true;
@@ -66,8 +67,8 @@
                     />
                     <button class="btn-search">
                         <svg class="icon">
-                            <use xlink:href="/images/symbols.svg#icon-search"
-                            ></use>
+                            <use xlink:href="/images/symbols.svg#icon-search">
+                            </use>
                         </svg>
                     </button>
                 </form>
