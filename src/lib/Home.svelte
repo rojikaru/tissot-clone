@@ -8,6 +8,7 @@
     import NewsLetter from "./home-sections/Newsletter.svelte";
     import { newsList } from "../models/news";
     import Help from "./home-sections/Help.svelte";
+    import Email from "./home-sections/Email.svelte";
 </script>
 
 <MostPopularSection />
@@ -28,3 +29,4 @@
 <Novelties />
 <NewsLetter news={newsList} />
 <Help />
+<Email />

@@ -6,7 +6,7 @@ body {
   min-height: 100vh;
   font-family: 'Tissot Sans', 'Noto Sans', Arial, Helvetica, sans-serif;
   color: #252525;
-  font-size: 1.6rem;
+  font-size: 16px;
   transition: all .2s ease-in;
 }
 
@@ -86,4 +86,8 @@ img {
   line-height: 1;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale
+}
+
+button {
+    border: 1px transparent;
 }

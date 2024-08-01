@@ -68,6 +68,7 @@
         flex-direction: column;
         align-items: center;
         flex: 1 0 66.66667%;
+        scroll-snap-align: center;
     }
 
     .category img {
