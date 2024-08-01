@@ -7,6 +7,7 @@
     import Novelties from "./home-sections/Novelties.svelte";
     import NewsLetter from "./home-sections/Newsletter.svelte";
     import { newsList } from "../models/news";
+    import Help from "./home-sections/Help.svelte";
 </script>
 
 <MostPopularSection />
@@ -26,3 +27,4 @@
 <Register/>
 <Novelties />
 <NewsLetter news={newsList} />
+<Help />
