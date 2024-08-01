@@ -94,9 +94,7 @@
     };
 </script>
 
-<svelte:window
-    on:resize={() => scrollTo(currentIndex, false)}
-/>
+<svelte:window on:resize={() => scrollTo(currentIndex, false)} />
 
 <div class="carousel">
     {#if slides.length > 0}
@@ -375,8 +373,10 @@
             position: absolute;
             display: flex;
             justify-content: space-between;
-            top: 23%;
+            top: 33%;
             width: 100%;
+            left: 0;
+            right: 0;
         }
     }
 </style>

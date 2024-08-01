@@ -5,6 +5,8 @@
     import CategoriesSection from "./home-sections/Categories.svelte";
     import Register from "./home-sections/Register.svelte";
     import Novelties from "./home-sections/Novelties.svelte";
+    import NewsLetter from "./home-sections/Newsletter.svelte";
+    import { newsList } from "../models/news";
 </script>
 
 <MostPopularSection />
@@ -23,3 +25,4 @@
 <CategoriesSection />
 <Register/>
 <Novelties />
+<NewsLetter news={newsList} />
