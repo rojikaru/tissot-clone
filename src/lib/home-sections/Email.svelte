@@ -3,13 +3,14 @@
     <p>Sign up to our newsletter to receive the latest updates and offers.</p>
     <form>
         <input type="email" placeholder="Email address" />
-        <button type="submit" class="btn-primary">Submit</button>
+        <button type="submit" class="btn-primary">
+            <span>Submit</span>
+        </button>
     </form>
 </section>
 
 <style>
     .email {
-        margin-bottom: 1px;
         background-color: #4f4f4f;
         text-align: center;
         padding: 15px;
@@ -53,6 +54,8 @@
     .email button {
         width: auto;
         padding: 17px 30px;
+        display: flex;
+        align-items: center;
     }
 
     @media (min-width: 640px) {
