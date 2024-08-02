@@ -1,8 +1,26 @@
+<script lang="ts">
+    let inputActive = false;
+    let text: string;
+
+    const handleFocus = () => {
+        console.log(123);
+        inputActive = !inputActive || text?.length > 0;
+    };
+</script>
+
 <section class="email">
     <h2>Join the Tissot family</h2>
     <p>Sign up to our newsletter to receive the latest updates and offers.</p>
     <form>
-        <input type="email" placeholder="Email address" />
+        <input
+            bind:value={text}
+            on:focus={handleFocus}
+            on:focusout={handleFocus}
+            on:input={handleFocus}
+            id="email"
+            type="email"
+        />
+        <label class:focused={inputActive} for="email">Email address</label>
         <button type="submit" class="btn-primary">
             <span>Submit</span>
         </button>
@@ -40,6 +58,8 @@
     .email form {
         display: flex;
         justify-content: center;
+
+        position: relative;
         margin: 30px auto;
         max-width: 750px;
         gap: 25px;
@@ -50,6 +70,34 @@
         flex: 1;
         border: none;
         border-radius: 10px;
+        transition: all 0.2s ease-in;
+        font-size: 16px;
+    }
+
+    .email label {
+        position: absolute;
+        top: 24px;
+        left: 15px;
+        color: #757575;
+        font-size: 16px;
+        transform: translateY(-50%);
+        padding: 0 5px;
+        font-weight: 400;
+        text-transform: uppercase;
+        z-index: 2;
+        transition: all .2s ease-in;
+        max-width: calc(100% - 20px);
+        cursor: text;
+    }
+
+    .email label.focused {
+        top: -2px;
+        font-size: 10px;
+        text-transform: uppercase;
+        color: white;
+        background: transparent;
+        opacity: 1;
+        visibility: visible;
     }
 
     .email button {

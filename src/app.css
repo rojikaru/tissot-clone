@@ -80,9 +80,9 @@ img {
   height: auto;
 }
 
-[class*=" icon-"],[class^=icon-] {
-  font-family: 'icomoon'!important;
-  speak: none;
+[class*=" icon-"],
+[class^=icon-] {
+  font-family: 'icomoon' !important;
   font-style: normal;
   font-weight: 400;
   font-variant: normal;
@@ -93,7 +93,7 @@ img {
 }
 
 button {
-    border: 1px transparent;
+  border: 1px transparent;
 }
 
 a.underline {
@@ -119,4 +119,19 @@ a.underline::after {
 
 a.underline:hover::after {
   transform: scaleX(1);
+}
+
+@media (min-width: 1280px) {
+  .focus,
+  a:focus,
+  button:focus,
+  input:focus,
+  input:not([disabled]):focus,
+  select:focus,
+  select:not([disabled]):focus,
+  textarea:not([disabled]):focus {
+    outline: 1px dashed #dc1f18;
+    outline-offset: 3px;
+    box-shadow: none;
+  }
 }
