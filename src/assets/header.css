@@ -341,6 +341,7 @@ nav.search {
         margin-left: 15px;
     }
 
+    .header-white .mini-left svg,
     .header-white .mini-right a {
         color: black;
     }
