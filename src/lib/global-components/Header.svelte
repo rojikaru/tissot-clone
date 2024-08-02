@@ -12,6 +12,7 @@
 
     let navOpen = true;
     let menuOpen = false;
+    let searchOpen = false;
 
     const dispatchNav = (input: boolean | string) => {
         if (typeof input === "string") {
@@ -80,7 +81,7 @@
                     <use xlink:href="/images/symbols.svg#icon-search"></use>
                 </svg>
             </button>
-            <a href="#top">
+            <a href="#top" class="user">
                 <svg class="icon">
                     <use xlink:href="/images/symbols.svg#icon-user"></use>
                 </svg>
@@ -123,10 +124,20 @@
             </div>
             <div class="menu-right">
                 <ul>
+                    <li class="search">
+                        <button on:click={() => searchOpen = true}>
+                            <svg class="icon">
+                                <use xlink:href="/images/symbols.svg#icon-search">
+                                </use>
+                            </svg>
+                            <span>Search</span>
+                        </button>
+                    </li>
                     <li>
                         <a href="#top">
                             <svg>
-                                <use xlink:href="/images/symbols.svg#icon-map-pin"
+                                <use
+                                    xlink:href="/images/symbols.svg#icon-map-pin"
                                 ></use>
                             </svg>
                             <span>Find stores</span>
@@ -141,7 +152,7 @@
                             <span>Register watch</span>
                         </a>
                     </li>
-                    <li>
+                    <li class="intl">
                         <a href="#top">
                             <svg>
                                 <use xlink:href="/images/symbols.svg#icon-globe"
@@ -154,7 +165,7 @@
             </div>
         </nav>
     </nav>
-    <nav class="search" class:white={!isTop} aria-hidden={navOpen}>
+    <nav class="search" aria-hidden={navOpen}>
         <div class="flex">
             <form action="#search" method="post">
                 <input

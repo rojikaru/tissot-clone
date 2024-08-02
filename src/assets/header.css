@@ -9,6 +9,11 @@ header {
         transform .3s ease-in,
         opacity .3s ease-in,
         visibility .3s ease-in;
+    background: linear-gradient(to bottom, #25211e 0, #25211e00 100%);
+}
+
+header a {
+    color: white;
 }
 
 header svg {
@@ -33,8 +38,7 @@ header button {
 }
 
 .header-white,
-.header-white a,
-.header-white svg {
+.header-white a {
     color: black;
 }
 
@@ -156,7 +160,7 @@ form {
     background-color: white;
 }
 
-nav.search.white input[type="search"] {
+.header-white input[type="search"] {
     background-color: #f1f1f1;
     color: #757575;
 }
@@ -238,6 +242,13 @@ nav.search {
     text-decoration: none;
 }
 
+.mini-right {
+    position: absolute;
+    right: 20px;
+    top: 25%;
+    z-index: 10;
+}
+
 @media (max-width: 1280px) {
     .menu {
         position: fixed;
@@ -285,11 +296,6 @@ nav.search {
         top: 25%;
         left: 8px;
         color: white;
-    }
-
-    .mini-right {
-        right: 20px;
-        top: 25%;
     }
 
     .mini-right,
@@ -383,6 +389,10 @@ nav.search {
         font-size: 16px;
         letter-spacing: 0;
     }
+
+    .menu-right .search {
+        display: none;
+    }
 }
 
 @media (min-width: 1280px) {
@@ -391,22 +401,181 @@ nav.search {
         visibility: hidden;
     }
 
-    .mini-left,
-    .mini-right {
-        visibility: hidden;
-        display: none;
-    }
-
-    .menu {
-        position: absolute;
-        top: 0%;
-
-        display: grid;
-    }
-
     header[aria-hidden="true"] {
         top: -100%;
         opacity: 0;
         visibility: hidden;
+    }
+
+    .mini-left,
+    .mini-right .btn-search {
+        visibility: hidden;
+        display: none;
+    }
+
+    .mini-right {
+        right: 30px;
+        top: 40%;
+        z-index: 10;
+    }
+
+    .menu {
+        position: absolute;
+        top: 20px;
+        right: 0;
+        left: 0;
+
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+
+        background-color: transparent;
+        text-transform: uppercase;
+        font-size: 14px;
+    }
+
+    .header-white a:hover {
+        color: #dc1f18;
+    }
+
+    .underline:after {
+        background-color: white;
+    }
+
+    .header-white .underline::after {
+        background-color: #dc1f18;
+    }
+
+    .menu-left {
+        padding-left: 25px;
+        order: -1;
+        flex: 0 1 50%;
+
+        display: flex;
+        align-items: center;
+    }
+
+    .menu-right {
+        order: 0;
+        flex: 0 1 40%;
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+        padding-right: 90px;
+    }
+
+    a.logo {
+        padding: 30px 0;
+    }
+
+    .menu-right a {
+        display: flex;
+    }
+
+    .menu-right span {
+        display: none;
+    }
+
+    .menu-bottom {
+        order: 1;
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-grow: 1;
+
+        min-height: 50px;
+        margin-top: 10px;
+    }
+
+    .menu-left ul,
+    .menu-right ul,
+    .menu-bottom ul {
+        display: inline-flex;
+    }
+
+    .menu-right ul {
+        gap: 40px;
+    }
+
+    .menu-right li {
+        padding: 0;
+        display: flex;
+        align-items: center;
+    }
+
+    .menu-right a,
+    .user a {
+        position: relative;
+    }
+
+    .menu-right a span,
+    .user::after {
+        display: block;
+        text-transform: uppercase;
+        white-space: nowrap;
+        font-size: 9px;
+        position: absolute;
+        letter-spacing: .5px;
+        bottom: -18px;
+        left: 50%;
+        transform: translateX(-50%);
+        margin-left: 0;
+        line-height: 9px;
+        opacity: 0;
+        transition: opacity .2s ease-in;
+    }
+
+    .user::after {
+        content: "My account";
+        bottom: -10px;
+    }
+
+    .menu-right a:hover span,
+    .user:hover::after {
+        opacity: 1;
+    }
+
+    .intl {
+        order: -1;
+    }
+
+    .menu-right .search {
+        order: -2;
+    }
+
+    .menu-right .search button {
+        text-transform: uppercase;
+        background-color: #f1f1f14d;
+        color: white;
+        width: 200px;
+        height: 38px;
+        display: flex;
+        align-items: center;
+        text-align: left;
+        border-radius: 50px;
+        font-size: 12px;
+        padding: 8px;
+        margin-bottom: 0;
+        transition: all .2s ease-in;
+    }
+
+    .header-white .menu-right .search button {
+        background-color: #f1f1f1;
+        color: black;
+    }
+
+    .menu-right .search button span {
+        margin-left: 8px;
+        display: inline;
+    }
+
+    .menu-right .search button:hover {
+        color: #dc1f18;
+    }
+
+    .header-white .menu-bottom {
+        background-color: white;
+        color: black;
     }
 }
