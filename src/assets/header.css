@@ -249,6 +249,62 @@ nav.search {
     z-index: 10;
 }
 
+.menu-search {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+
+    transition: all .2s ease-in;
+    height: 120px;
+    box-sizing: border-box;
+    padding: 16px 24px;
+    line-height: 24px;
+    background-color: white;
+
+    position: fixed;
+    z-index: 10;
+    top: 0;
+    left: 0;
+    right: 0;
+}
+
+.menu-search.top {
+    box-sizing: content-box;
+}
+
+.menu-search img {
+    width: 158px;
+    margin-top: 8px;
+}
+
+.menu-search form {
+    position: relative;
+    width: 100%;
+    max-width: 780px;
+}
+
+.menu-search input {
+    background-color: #f1f1f1;
+    color: #757575;
+}
+
+.menu-search .btn-search {
+    position: absolute;
+    top: 15%;
+    left: 4px;
+    color: black;
+}
+
+.menu-search .btn-search:hover {
+    color: #dc1f18;
+}
+
+.menu-search .btn-dismiss {
+    background-color: transparent;
+    color: #000000;
+    position: static;
+}
+
 @media (max-width: 1280px) {
     .menu {
         position: fixed;
@@ -283,6 +339,10 @@ nav.search {
     .mini-right a {
         color: white;
         margin-left: 15px;
+    }
+
+    .header-white .mini-right a {
+        color: black;
     }
 
     .mini-right .btn-search[aria-hidden="true"] {
@@ -392,6 +452,10 @@ nav.search {
 
     .menu-right .search {
         display: none;
+    }
+
+    .menu-search {
+        transform: translateX(200%);
     }
 }
 
@@ -505,7 +569,7 @@ nav.search {
     }
 
     .menu-right a,
-    .user a {
+    .user {
         position: relative;
     }
 
@@ -566,7 +630,7 @@ nav.search {
     }
 
     .menu-right .search button span {
-        margin-left: 8px;
+        margin: 2px 0 0 8px;
         display: inline;
     }
 
@@ -577,5 +641,13 @@ nav.search {
     .header-white .menu-bottom {
         background-color: white;
         color: black;
+    }
+
+    .menu-search[aria-hidden="true"] {
+        transform: translateX(200%);
+    }
+
+    .menu-search[aria-hidden="false"] {
+        transform: translateX(0);
     }
 }

@@ -14,6 +14,8 @@
     let menuOpen = false;
     let searchOpen = false;
 
+    let searchtxt: string | null;
+
     const dispatchNav = (input: boolean | string) => {
         if (typeof input === "string") {
             input = input === "true";
@@ -127,7 +129,9 @@
                     <li class="search">
                         <button on:click={() => searchOpen = true}>
                             <svg class="icon">
-                                <use xlink:href="/images/symbols.svg#icon-search">
+                                <use
+                                    xlink:href="/images/symbols.svg#icon-search"
+                                >
                                 </use>
                             </svg>
                             <span>Search</span>
@@ -191,6 +195,25 @@
         </div>
     </nav>
 </header>
+<nav class="menu-search" class:top={isTop} aria-hidden={!searchOpen}>
+    <img src="/images/tissot-minimal.svg" alt="Tissot logo" />
+    <form action="#search" method="post">
+        <input bind:value={searchtxt} type="search" placeholder="Search for a product" />
+        <button class="btn-search">
+            <svg class="icon">
+                <use xlink:href="/images/symbols.svg#icon-search"></use>
+            </svg>
+        </button>
+    </form>
+    <button class="btn-dismiss" on:click={() => {
+        if (searchtxt) searchtxt = null
+        else searchOpen = false
+    }}>
+        <svg class="icon">
+            <use xlink:href="/images/symbols.svg#icon-x"></use>
+        </svg>
+    </button>
+</nav>
 
 <style>
     @import url("../../assets/header.css");
