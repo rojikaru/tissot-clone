@@ -15,6 +15,7 @@
         text-align: center;
         padding: 15px;
         color: white;
+        margin-top: 1px;
     }
 
     .email h2 {

@@ -76,7 +76,7 @@
         width: 100%;
         display: block;
         object-fit: cover;
-        transition: all 0.2s ease-in;
+        transition: all .2s ease-in;
         transform: scale(0.9);
     }
 
@@ -103,16 +103,16 @@
 
         margin: 0 8px;
 
-        transition: all 0.2s;
+        transition: all .2s;
         transform: scale(0.9);
         opacity: 0.3;
-        transition: all 0.2s ease-in 0s;
+        transition: all .2s ease-in 0s;
     }
 
     .watch img {
         transform: scale(1);
         min-width: 85%;
-        transition: all 0.2s ease-in-out;
+        transition: all .2s ease-in-out;
     }
 
     .watch img:hover {
@@ -143,7 +143,7 @@
         text-decoration: none;
         color: rgb(37, 37, 37);
         padding: 15px 20px 0;
-        transition: all 0.2s ease-in;
+        transition: all .2s ease-in;
     }
 
     .watch-description:hover {

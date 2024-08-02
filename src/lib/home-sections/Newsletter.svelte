@@ -54,7 +54,7 @@
     .news h3 {
         color: black;
         text-transform: uppercase;
-        transition: all 0.2s ease-in;
+        transition: all .2s ease-in;
     }
 
     .news a:hover h3 {
@@ -118,7 +118,7 @@
     }
 
     article img {
-        transition: all 0.2s ease-in;
+        transition: all .2s ease-in;
         object-fit: cover;
     }
 

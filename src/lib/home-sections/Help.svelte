@@ -12,7 +12,6 @@
 <style>
     .help {
         text-transform: uppercase;
-        margin-bottom: 1px;
         display: grid;
         grid-template-columns: repeat(1, 1fr);
     }

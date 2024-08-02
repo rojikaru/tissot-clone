@@ -48,7 +48,7 @@
     .categories h3 {
         font-size: 16px;
         margin: 16px 15px 25px;
-        transition: all 0.2s ease;
+        transition: all .2s ease;
     }
 
     .carousel {
@@ -72,7 +72,7 @@
     }
 
     .category img {
-        transition: all 0.2s ease;
+        transition: all .2s ease;
         justify-self: flex-end;
     }
 

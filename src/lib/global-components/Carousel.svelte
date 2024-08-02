@@ -193,7 +193,7 @@
         top: 50%;
         left: 50%;
         transform: translate3d(-50%, -50%, 0) scale(1);
-        transition: all 0.2s;
+        transition: all .2s;
         min-width: 85%;
     }
 
@@ -264,7 +264,7 @@
 
     .card a {
         color: #252525;
-        transition: all 0.2s ease-in;
+        transition: all .2s ease-in;
     }
 
     .card:hover a {
@@ -306,7 +306,7 @@
         overflow: hidden;
         width: 36px;
         cursor: pointer;
-        transition: all 0.2s ease-in;
+        transition: all .2s ease-in;
     }
 
     .buttons button:disabled {
