@@ -83,14 +83,11 @@
         leftActive = true;
         if (currentIndex > maxIndex) scrollTo(maxIndex - 1);
         else scrollTo(currentIndex - 1);
-
-        console.log(leftActive);
     };
     const scrollNext = () => {
         leftActive = false;
         if (currentIndex < 0) scrollTo(1);
         else scrollTo(currentIndex + 1);
-        console.log(leftActive);
     };
 </script>
 

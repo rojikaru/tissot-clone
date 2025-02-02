@@ -3,7 +3,6 @@
     let text: string;
 
     const handleFocus = () => {
-        console.log(123);
         inputActive = !inputActive || text?.length > 0;
     };
 </script>
